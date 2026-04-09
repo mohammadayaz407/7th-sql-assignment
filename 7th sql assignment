@@ -1,0 +1,85 @@
+-- Create a table called employees with columns emp_id, name, age, department, salary.
+
+create table employes(
+emp_id int primary key,
+name varchar(50) not null,
+age int ,
+department varchar(50),
+salary decimal(10.2)
+);
+
+-- Insert 5 employee records into the table.
+
+insert into employes values
+(1,'ayaz',23,'hr',70000),
+(2,'vijay',22,'it',50000),
+(3,'tharunreddy',22,'finance',65000),
+(4,'aman',21,'sales',40000),
+(5,'vinay',24,'it',45000);
+ 
+
+ desc employes;
+-- Add a new column called experience to the table.
+
+ alter table employes
+ add experience int;
+ select * from employes;
+ 
+ update employes set experience=5
+ where emp_id=3;	
+  update employes set experience=3
+ where emp_id=4; 
+ update employes set experience=2
+ where emp_id=5;
+ 
+ -- Rename column name to employee_name.
+ 
+ alter table employes
+ rename column name to emplyee_name;
+ 
+ -- Change datatype of salary column to BIGINT.
+alter table employes
+modify salary bigint;
+
+-- Update experience of employee with emp_id = 3 to 6 years.
+update  employes set experience=6
+where emp_id=3;
+
+-- Increase salary of employees in IT department by 5000
+update employes set salary=salary+5000
+where department='it';
+
+set sql_safe_updates=0;
+-- Change department of employee with emp_id = 5 to Sales.
+update employes set department='sales' 
+where emp_id=5;
+
+-- Update age of employee Ravi to 26.
+update employes set age =26
+where emplyee_name='ravi';
+
+-- Set experience to 1 where experience is NULL.
+update employes set experience=1
+where experience is null;
+
+-- Add a new column city to the table.
+alter table employes
+add column city varchar(50);
+ select * from company_emplyees;
+ use d11;
+ 
+ -- Update city as Hyderabad for employees in IT department.
+ update employes set city='hyderabad'
+ where department='it';
+ 
+ -- Increase salary by 10% for employees with experience > 5.
+ update employes set salary=salary+(salary*10/100)
+ where experience>5;
+ 
+-- Rename table employees to company_employees
+alter table employes
+rename company_emplyees;
+
+-- Delete the column city from the table.
+alter table company_emplyees
+drop column city;
